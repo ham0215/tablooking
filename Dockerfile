@@ -6,3 +6,7 @@ WORKDIR /app/src
 
 RUN gem update bundler
 RUN bundle install
+
+RUN rubocop
+RUN rails_best_practices .
+RUN bundle audit check --update
