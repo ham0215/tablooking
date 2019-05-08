@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tablooking (0.1.0)
+    tablooking (0.0.1)
       rails (~> 5.2.3)
 
 GEM
