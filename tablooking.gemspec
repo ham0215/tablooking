@@ -16,13 +16,10 @@ Gem::Specification.new do |spec|
 
   spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.add_dependency "rails", "~> 5.2.3"
+  spec.add_dependency "rails"
 
-  spec.add_development_dependency "bundler-audit"
-  spec.add_development_dependency "rails_best_practices"
+  spec.add_development_dependency "factory_bot_rails"
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "rubocop"
-  spec.add_development_dependency "rubocop-performance"
-  spec.add_development_dependency "rubocop-rspec"
-  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "mysql2"
 end

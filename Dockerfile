@@ -1,13 +1,25 @@
-FROM ruby:2.6.3
+FROM ruby:2.6.5
 
-RUN apt-get update -qq && apt-get install -y build-essential nodejs
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    nodejs \
+    yarn \
+    vim \
+    locales \
+    locales-all \
+    default-mysql-client \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app/src
+ENV LANG ja_JP.UTF-8
+
+RUN mkdir -p /app
+WORKDIR /app
 COPY . .
 
-RUN gem update bundler
-RUN bundle install
+RUN gem install bundler
 
-RUN rubocop
-RUN rails_best_practices .
-RUN bundle audit check --update
+CMD ["tail", "-f", "/dev/null"]
