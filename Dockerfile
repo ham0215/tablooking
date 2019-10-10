@@ -20,4 +20,6 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY . .
 
+RUN gem install bundler
+
 CMD ["tail", "-f", "/dev/null"]
